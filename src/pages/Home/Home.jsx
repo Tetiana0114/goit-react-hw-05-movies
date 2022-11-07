@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getTrendingMovie from '../../services/fetchMovies';
+import { getTrendingMovie } from '../../services/fetchMovies';
 import Loader from '../../components/Loader';
 import MoviesList from '../../components/MoviesList';
 

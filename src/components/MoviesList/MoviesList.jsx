@@ -20,7 +20,7 @@ const MoviesList = ({ movies }) => {
   );
 };
 
-Movies.propTypes = {
+MoviesList.propTypes = {
 movies: PropTypes.arrayOf(PropTypes.shape({
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
