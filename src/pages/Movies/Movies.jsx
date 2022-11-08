@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { searchMovies } from '../../services/fetchMovies';
+import css from './Movies.module.css';
+import { FaSearch } from "react-icons/fa";
 
 import Loader from '../../components/Loader';
 import MoviesList from '../../components/MoviesList';
@@ -38,17 +40,20 @@ searchNewMovies();
 }, [searchName]);
 
   return (
-    <div>
-      <form onSubmit={handleSearchFormSubmit}>
-        <input
+    <div >
+      <div className={css.search_bar}>
+        <form onSubmit={handleSearchFormSubmit} className={css.form}>
+        <input className={css.form_input}
           type="text"
           name="query"
           autoComplete="off"
           autoFocus
-          placeholder="Search movies"
+          placeholder="Search movies..."
         />
-        <button type="submit">Search</button>
+          <button type="submit" className={css.form_btn}><FaSearch size={26} className={css.btn_svg} /></button>
       </form>
+      </div>
+      
     {error && <p>Whoops, something went wrong...</p>}
     {loading && <Loader />}
     {movies && <MoviesList movies={movies}/>}
