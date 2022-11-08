@@ -10,10 +10,10 @@ const Movies = () => {
     const [loading, setLoading] = useState(false);
     const [movies, setMovies] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams({});
-    const searchName = searchParams.get('searchName');
+    const searchName = searchParams.get('query');
  
 const handleSearchFormSubmit = event => {
-    setSearchParams({ searchName: event.target.value.toLowerCase() });
+    setSearchParams({ query: event.target.value.toLowerCase() });
     }
     
 useEffect(() => {
@@ -47,3 +47,4 @@ searchNewMovies();
 };
 
 export default Movies;
+

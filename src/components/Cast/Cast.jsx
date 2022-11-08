@@ -6,16 +6,16 @@ import Loader from 'components/Loader';
 
 const Cast = () => {
     const [error, setError] = useState(null);
-    const [actors, setActors] = useState([]);
+    const [cast, setCast] = useState([]);
     const [loading, setLoading] = useState(false);
-    const { id } = useParams();
+    const { movieId } = useParams();
 
   useEffect(() => {
     const getCastOfFilm= async () => {
       setLoading(true);
       try {
-        const cast = await getMovieCast(id);
-        setActors(cast);
+        const castOfFilm = await getMovieCast(movieId);
+        setCast(castOfFilm);
       }
       catch (error) {
          setError(error);
@@ -25,25 +25,21 @@ const Cast = () => {
       }
     };
     getCastOfFilm();
-  }, [id]);
+  }, [movieId]);
 
   return (  
 <ul>
-       {error && <p>Whoops, something went wrong...</p>}
-    {loading && <Loader/>}
-    {actors.map(actor => (
-          <li key={actor.id}>
-            <img
-              src={actor.profile_path}
-              alt={actor.name}
-            />
-            <p>{actor.name}</p>
-            <p>Character: {actor.character}</p>
-          </li>
-        ))}
-      </ul>
-    
-  );
+  {error && <p>Whoops, something went wrong...</p>}
+  {loading && <Loader/>}
+  {cast.map(actor => (
+    <li key={actor.id}>
+    <img src={'https://image.tmdb.org/t/p/w500' + actor.profile_path} alt={actor.name} width="120px"/>
+    <h3>{actor.name}</h3>
+    <p><span>Character:</span> {actor.character}</p>
+    </li>
+    ))}
+</ul>
+);
 };
 
 export default Cast;
