@@ -27,6 +27,8 @@ const Cast = () => {
     getCastOfFilm();
   }, [movieId]);
 
+  const imgUrl = 'https://image.tmdb.org/t/p/w500';
+
   return (  
 <ul className={css.list}>
   {error && <p>Whoops, something went wrong...</p>}
@@ -34,7 +36,7 @@ const Cast = () => {
   {cast.map(actor => (
     <li key={actor.id} className={css.list_item}>
       <img
-        src={'https://image.tmdb.org/t/p/w500' + actor.profile_path}
+        src={imgUrl + actor.profile_path}
         alt=""
         width="120px" />
     <h3>{actor.name}</h3>

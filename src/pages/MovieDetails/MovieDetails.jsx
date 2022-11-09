@@ -30,6 +30,8 @@ const MovieDetails = () => {
     getDetailsOfFilm();
   }, [movieId]);
 
+  const imgUrl = 'https://image.tmdb.org/t/p/w500';
+
   return (
     <>
     <Link to={location?.state?.from ?? '/movies'}>
@@ -39,7 +41,7 @@ const MovieDetails = () => {
     {loading && <Loader />}
     {movieDetails && (
         <div className={css.info}>
-          <img width="300px" src={'https://image.tmdb.org/t/p/w500' + movieDetails.poster_path} alt={movieDetails.title}
+          <img width="300px" src={imgUrl + movieDetails.poster_path} alt={movieDetails.title}
           />
           <div className={css.text_info}>
             <h1>{movieDetails.title} / {movieDetails.release_date.slice(0, 4)}</h1>
