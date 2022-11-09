@@ -1,0 +1,12 @@
+.list {
+    list-style: none;
+    padding-left: 20px;
+}
+.author {
+    color: rgb(9, 94, 18);
+}
+.text {
+    font-weight: 700;
+    color: rgb(170, 4, 4);
+    margin-left: 20px;
+}

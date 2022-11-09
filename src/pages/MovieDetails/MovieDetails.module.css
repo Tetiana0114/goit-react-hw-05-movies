@@ -38,7 +38,7 @@
 .list_item {
     display: inline;
     font-weight: 700;
-    color: rgb(5, 61, 33);
+    color: rgb(18, 127, 73);
 }
 .list_item:not(:first-child) {
     margin-left: 15px;

@@ -4,6 +4,7 @@ import { getMovieDetails } from '../../services/fetchMovies';
 import Loader from '../../components/Loader';
 import css from './MovieDetails.module.css';
 import { SlActionUndo } from "react-icons/sl";
+import AdditionalInformation from 'components/AdditionalInformation';
 
 const MovieDetails = () => {
     const [error, setError] = useState(null);
@@ -57,12 +58,7 @@ const MovieDetails = () => {
       )}
       <hr />
       <div>
-        <h2>Additional information:</h2>
-        <ul>
-          <li><Link to="cast">Cast</Link></li>
-          <li><Link to="reviews">Reviews</Link></li>
-        </ul>
-        <hr />
+        <AdditionalInformation/>
         <Outlet />
       </div>
     </>

@@ -11,7 +11,9 @@ const MoviesList = ({ movies }) => {
       {movies &&
         movies.map(movie => (
           <li key={movie.id} className={css.list_item}>
-            <Link to={`/movies/${movie.id}`} state={{ from: location }}>{movie.title}</Link>
+            <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+              {movie.title}
+            </Link>
           </li>
         ))}
     </ul>
@@ -19,9 +21,9 @@ const MoviesList = ({ movies }) => {
 };
 
 MoviesList.propTypes = {
-movies: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
 })),
 };
 

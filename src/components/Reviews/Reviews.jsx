@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from '../../services/fetchMovies';
 import Loader from 'components/Loader';
-// import css from './Reviews.module.css';
+import css from './Reviews.module.css';
 
 const Reviews = () => {
   const [error, setError] = useState(null);
@@ -33,10 +33,10 @@ const Reviews = () => {
     <div>
     {error && <p>Whoops, something went wrong...</p>}
     {loading && <Loader />}
-    {noReviews ? <p>We don't have any reviews for this movie.</p> :
-        (<ul>{reviews.map(review => (
+    {noReviews ? <p className={css.text}>We don't have any reviews for this movie.</p> :
+        (<ul className={css.list}>{reviews.map(review => (
               <li key={review.id}>
-              <h3>Author: {review.author}</h3>
+              <h3>Author: <span className={css.author}>{review.author}</span></h3>
               <p>{review.content}</p>
               </li>
             ))}
