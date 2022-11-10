@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import css from './MoviesList.module.css';
 import { useLocation, NavLink } from 'react-router-dom';
 
-
 const MoviesList = ({ movies }) => {
   const location = useLocation();
 

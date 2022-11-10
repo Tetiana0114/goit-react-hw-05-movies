@@ -10,22 +10,24 @@ const Movies = () => {
     const [loading, setLoading] = useState(false);
     const [movies, setMovies] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams({});
-    const searchName = searchParams.get('query');
+    const query = searchParams.get("query") ?? "";
  
   const handleSearchFormSubmit = event => {
     event.preventDefault();
-    setSearchParams({ query: event.target.elements.query.value.toLowerCase() });
+    const form = event.currentTarget;
+    setSearchParams({ query: form.elements.query.value.toLowerCase().trim() });
+    form.reset();
   };
-    
+ 
 useEffect(() => {
-  if (!searchName) {
+  if (query === "") {
     return;
-}
+  }
     const searchNewMovies = async () => {
         setLoading(true);
         try {
-        const newQuery = await searchMovies(searchName);
-        setMovies(newQuery);
+          const newQuery = await searchMovies(query);
+          setMovies(newQuery);
         }
         catch (error) {
           setError(error);
@@ -35,7 +37,7 @@ useEffect(() => {
         }
 }
 searchNewMovies();
-}, [searchName]);
+}, [query]);
 
   return (
     <div >
