@@ -1,8 +1,16 @@
 .list_item {
-    font-size: 20px;
-    font-weight: 600;
     margin-bottom: 10px;
 }
 .title {
     margin-left: 20px;
+}
+.link {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(170, 4, 4);
+}
+.active {
+    composes: link;
+    color: rgb(18, 127, 73);
 }

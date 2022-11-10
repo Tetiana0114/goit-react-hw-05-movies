@@ -3,8 +3,8 @@ import { useLocation, useParams, Outlet, Link } from 'react-router-dom';
 import { getMovieDetails } from '../../services/fetchMovies';
 import Loader from '../../components/Loader';
 import css from './MovieDetails.module.css';
-import { SlActionUndo } from "react-icons/sl";
 import AdditionalInformation from 'components/AdditionalInformation';
+import GoBackBtn from 'components/GoBackBtn';
 
 const MovieDetails = () => {
     const [error, setError] = useState(null);
@@ -35,7 +35,7 @@ const MovieDetails = () => {
   return (
     <>
     <Link to={location?.state?.from ?? '/movies'}>
-    <button type="button" className={css.btn}><SlActionUndo size={32} className={css.btn_svg}/></button>
+    <GoBackBtn/>
     </Link>
     {error && <p>Whoops, something went wrong...</p>}
     {loading && <Loader />}

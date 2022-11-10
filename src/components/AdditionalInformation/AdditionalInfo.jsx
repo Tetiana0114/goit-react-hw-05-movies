@@ -1,5 +1,5 @@
 import css from './AdditionalInfo.module.css';
-import {  useLocation, Link } from 'react-router-dom';
+import {  useLocation, NavLink } from 'react-router-dom';
 
 const AdditionalInformation = () => {
     const location = useLocation();
@@ -9,10 +9,20 @@ const AdditionalInformation = () => {
         <h2 className={css.title}>Additional information:</h2>
         <ul>
                 <li className={css.list_item}>
-                    <Link to="cast" state={{ from: location.state?.from }}>Cast</Link>
+                    <NavLink
+                        to="cast" state={{ from: location.state?.from }}
+                        className={({ isActive }) => (isActive ? css.active : css.link)}
+                    >
+                        Cast
+                    </NavLink>
                 </li>
                 <li className={css.list_item}>
-                    <Link to="reviews" state={{ from: location.state?.from }}>Reviews</Link>
+                    <NavLink
+                        to="reviews" state={{ from: location.state?.from }}
+                        className={({ isActive }) => (isActive ? css.active : css.link)}
+                    >
+                        Reviews
+                    </NavLink>
                 </li>
         </ul>
         <hr />

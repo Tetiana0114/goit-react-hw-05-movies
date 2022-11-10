@@ -1,16 +1,28 @@
 import { NavLink, Outlet } from "react-router-dom";
-// import css from './SiteNavigation.module.css';
+import css from './SiteNavigation.module.css';
 import { IoMdFilm } from "react-icons/io";
 
 export const SiteNavigation = () => {
     return (
       <div>
-        <IoMdFilm size={36} />
-      <nav>
-        <NavLink to="/" end>Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
-        <hr />
+        <header className={css.header}>
+           <IoMdFilm size={60} className={css.logo} />
+      <nav className={css.nav}>
+          <NavLink
+            to="/" end
+            className={({ isActive }) => (isActive ? css.active : css.link)}
+            >
+            Home
+          </NavLink>
+          <NavLink
+            to="/movies"
+            className={({ isActive }) => (isActive ? css.active : css.link)}
+          >
+            Movies
+          </NavLink>
         </nav>
+        </header>
+        <hr className={css.hr} />
         <Outlet />
       </div>   
   );

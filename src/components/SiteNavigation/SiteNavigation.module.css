@@ -1,0 +1,27 @@
+.link {
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: 700;
+    margin-left: 20px;
+    color: rgb(38, 160, 130);
+}
+.active {
+    composes: link;
+    color: rgb(83, 83, 83);
+}
+.logo {
+    fill: rgb(84, 83, 83);
+    margin:  0 auto;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(168, 222, 208, 0.216);
+}
+.nav {
+    margin: 0 auto;
+}
+.hr {
+    margin: 0;
+}
