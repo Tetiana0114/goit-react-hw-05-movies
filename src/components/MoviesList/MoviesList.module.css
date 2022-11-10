@@ -5,3 +5,8 @@
 .list_item:not(:last-child) {
     margin-bottom: 8px;
 }
+.link {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+}

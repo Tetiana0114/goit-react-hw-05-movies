@@ -10,3 +10,8 @@
     margin-left: 20px;
     margin-right: auto;
 }
+.text {
+    font-weight: 700;
+    color: rgb(170, 4, 4);
+    margin-left: 20px;
+}
