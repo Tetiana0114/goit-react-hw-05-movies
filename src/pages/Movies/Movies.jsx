@@ -19,11 +19,12 @@ const Movies = () => {
     form.reset();
   };
  
-useEffect(() => {
+  useEffect(() => {
+    
   if (query === "") {
     return;
   }
-    const searchNewMovies = async () => {
+  const searchNewMovies = async () => {
         setLoading(true);
         try {
           const newQuery = await searchMovies(query);
@@ -36,7 +37,8 @@ useEffect(() => {
           setLoading(false);
         }
 }
-searchNewMovies();
+  searchNewMovies();
+  
 }, [query]);
 
   return (
@@ -44,7 +46,7 @@ searchNewMovies();
     <SearchBox onSubmit={handleSearchFormSubmit} />
     {error && <p>Whoops, something went wrong...</p>}
     {loading && <Loader />}
-    {movies && <MoviesList movies={movies}/>}
+    {movies.length > 0 && <MoviesList movies={movies}/>}
     </div>
   );
 };

@@ -10,6 +10,7 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     
   useEffect(() => {
+    
     const getTrendingMoviesList = async () => {
       setLoading(true);
       try {
@@ -24,6 +25,7 @@ const Home = () => {
       }
     }
     getTrendingMoviesList();
+
   }, []);
 
   return (

@@ -23,7 +23,6 @@ export const SiteNavigation = () => {
           </NavLink>
         </nav>
         </header>
-        <hr className={css.hr} />
         <Suspense fallback={<div>Loading page...</div>}>
            <Outlet />
         </Suspense>

@@ -9,10 +9,11 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
-  
   const noReviews = reviews.length === 0;
  
   useEffect(() => {
+  if (!movieId) return;
+   
     const getReviewsOfFilm = async () => {
       setLoading(true);
       try {
@@ -27,6 +28,7 @@ const Reviews = () => {
       }
     };
     getReviewsOfFilm();
+
   }, [movieId]);
 
   return (

@@ -9,10 +9,12 @@ const Cast = () => {
   const [cast, setCast] = useState([]);
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
-  
+  const imgUrl = 'https://image.tmdb.org/t/p/w500';
   const noCast = cast.length === 0;
    
   useEffect(() => {
+  if (!movieId) return;
+    
     const getCastOfFilm= async () => {
       setLoading(true);
       try {
@@ -27,9 +29,8 @@ const Cast = () => {
       }
     };
     getCastOfFilm();
-  }, [movieId]);
 
-  const imgUrl = 'https://image.tmdb.org/t/p/w500';
+  }, [movieId]);
 
   return (  
   <div>
