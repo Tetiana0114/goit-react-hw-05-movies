@@ -3,6 +3,7 @@ import {  useLocation, NavLink } from 'react-router-dom';
 
 const AdditionalInformation = () => {
     const location = useLocation();
+    const backLink = location.state?.from;
 
     return (
         <>
@@ -10,7 +11,7 @@ const AdditionalInformation = () => {
         <ul>
                 <li className={css.list_item}>
                     <NavLink
-                        to="cast" state={{ from: location.state?.from }}
+                        to="cast" state={{ from: backLink }}
                         className={({ isActive }) => (isActive ? css.active : css.link)}
                     >
                         Cast
@@ -18,7 +19,7 @@ const AdditionalInformation = () => {
                 </li>
                 <li className={css.list_item}>
                     <NavLink
-                        to="reviews" state={{ from: location.state?.from }}
+                        to="reviews" state={{ from: backLink }}
                         className={({ isActive }) => (isActive ? css.active : css.link)}
                     >
                         Reviews

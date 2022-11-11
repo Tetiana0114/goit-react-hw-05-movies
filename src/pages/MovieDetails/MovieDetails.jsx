@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useLocation, useParams, Outlet, Link } from 'react-router-dom';
 import { getMovieDetails } from '../../services/fetchMovies';
 import Loader from '../../components/Loader';
@@ -7,11 +7,13 @@ import AdditionalInformation from 'components/AdditionalInformation';
 import GoBackBtn from 'components/GoBackBtn';
 
 const MovieDetails = () => {
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [movieDetails, setMovieDetails] = useState(null);
-    const { movieId } = useParams();
-    const location = useLocation();
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [movieDetails, setMovieDetails] = useState(null);
+  const { movieId } = useParams();
+  const location = useLocation();
+  const backLink = location.state?.from ?? "/movies";
+  const imgUrl = 'https://image.tmdb.org/t/p/w500';
 
   useEffect(() => {
     const getDetailsOfFilm = async () => {
@@ -30,11 +32,9 @@ const MovieDetails = () => {
     getDetailsOfFilm();
   }, [movieId]);
 
-  const imgUrl = 'https://image.tmdb.org/t/p/w500';
-
   return (
     <>
-    <Link to={location?.state?.from ?? '/movies'}>
+    <Link to={backLink}>
     <GoBackBtn/>
     </Link>
     {error && <p>Whoops, something went wrong...</p>}
@@ -60,8 +60,10 @@ const MovieDetails = () => {
       )}
       <hr />
       <div>
-        <AdditionalInformation/>
-        <Outlet />
+        <AdditionalInformation />
+        <Suspense fallback={<div>Loading page...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   );

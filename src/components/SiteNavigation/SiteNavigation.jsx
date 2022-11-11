@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
+import { Suspense } from "react";
 import css from './SiteNavigation.module.css';
 import { IoMdFilm } from "react-icons/io";
 
@@ -23,7 +24,9 @@ export const SiteNavigation = () => {
         </nav>
         </header>
         <hr className={css.hr} />
-        <Outlet />
+        <Suspense fallback={<div>Loading page...</div>}>
+           <Outlet />
+        </Suspense>
       </div>   
   );
 };
