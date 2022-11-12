@@ -10,7 +10,7 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     
   useEffect(() => {
-    
+  
     const getTrendingMoviesList = async () => {
       setLoading(true);
       try {
@@ -30,8 +30,8 @@ const Home = () => {
 
   return (
     <main>
-    {error && <p>Whoops, something went wrong...</p>}
     <h1 className={css.title}>Trending today:</h1>
+    {error && <p>Whoops, something went wrong...</p>}
     {loading && <Loader />}
     {movies && <MoviesList movies={movies} />}
     </main>

@@ -6,11 +6,12 @@ import Loader from '../../components/Loader';
 import MoviesList from '../../components/MoviesList';
 
 const Movies = () => {
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [movies, setMovies] = useState([]);
-    const [searchParams, setSearchParams] = useSearchParams({});
-    const query = searchParams.get("query") ?? "";
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams({});
+  const query = searchParams.get("query") ?? "";
+  const list = movies.length > 0;
  
   const handleSearchFormSubmit = event => {
     event.preventDefault();
@@ -46,7 +47,7 @@ const Movies = () => {
     <SearchBox onSubmit={handleSearchFormSubmit} />
     {error && <p>Whoops, something went wrong...</p>}
     {loading && <Loader />}
-    {movies.length > 0 && <MoviesList movies={movies}/>}
+    {list && <MoviesList movies={movies}/>}
     </div>
   );
 };
